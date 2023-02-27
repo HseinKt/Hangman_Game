@@ -16,8 +16,8 @@ h1, .bttn {
 }
 
 .hangman {
-    width: 40vh;
-    height: 40vh;
+    width: 30vh;
+    height: 30vh;
     border: 2px solid black;
 }
 
@@ -47,7 +47,6 @@ h1, .bttn {
     color: #fff;
     background-color: #337ab7;
     border-color: #2e6da4;
-    
 }
 
 .characters {
@@ -60,7 +59,6 @@ h1, .bttn {
     margin: 3%;
     padding-left: 10%;
     width: 50%;
-
 }
 
 .btn_char {
