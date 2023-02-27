@@ -1,0 +1,69 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+    margin: 2%;
+    background-color: #c6dff3;
+}
+
+h1, .bttn {
+    padding-left: 10%;
+    padding-bottom: 4%;
+}
+
+.hangman {
+    width: 40vh;
+    height: 40vh;
+    border: 2px solid black;
+}
+
+.game {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-left: 10%;
+}
+
+.col {
+    width: 50%;
+    padding: 10px;
+    height: 300px;
+}
+
+.btn {
+    justify-content: center;
+    margin-right: 10%;
+    display: inline-block;
+    font-weight: 400;
+    white-space: nowrap;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    
+}
+
+.characters {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    font-style: normal;
+    font-size: large;
+    margin: 3%;
+    padding-left: 10%;
+    width: 50%;
+
+}
+
+.btn_char {
+    padding: 2%;
+    margin: 0.2%;
+}
