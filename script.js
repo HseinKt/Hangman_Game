@@ -12,8 +12,8 @@ const dict = {
     Cities: ['Tokyo','Moscow','Berlin','Nairobi','Rio','Denver']
 };
 let arr = []
-
-let lose = 0
+let p = 0
+let lose = 10
 win.innerHTML = ""
 lost.innerHTML = ""
 
@@ -28,8 +28,9 @@ function guess_word() {
     if (r == 0){
         const r2 = Math.floor((Math.random() * l))
         const ply = dict.Players[r2]
-        hint.innerHTML = "Famous Football Players ("+ply.length+" letters)"
-        for ( i=0 ; i<ply.length ; i++) {
+        p = ply.length
+        hint.innerHTML = "Famous Football Players ("+p+" letters)"
+        for ( i=0 ; i<p ; i++) {
             // guess.append(" _")
             guess.innerHTML+= `<div id="${i}">_</div>`
         }
@@ -38,11 +39,11 @@ function guess_word() {
     else{
         const r2 = Math.floor((Math.random() * l2))
         const ply = dict.Cities[r2]
-        hint.innerHTML = "Cities famous of la casa de papel ("+ply.length+" letters)"
-        for ( i=0 ; i<ply.length ; i++) {
+        p = ply.length
+        hint.innerHTML = "Cities famous of la casa de papel ("+p+" letters)"
+        for ( i=0 ; i<p ; i++) {
             //guess.append(" _")
             guess.innerHTML+= `<div id="${i}">_</div>`
-
         }
         console.log(guess)
         return ply
@@ -84,13 +85,14 @@ function check_Character (n){
         }
     }
     else {
-        lose++
+        lose--
+        lost.innerHTML = "You have "+ lose +" lives"
     }
     if (arr.length === words.length){
         win.innerHTML = "YOU WIN "
     }
     
-    if (lose == 10){
+    if (lose == 0){
         lost.innerHTML = "YOU LOSE "
         hangman.setAttribute("src","hangman.png")
     }
