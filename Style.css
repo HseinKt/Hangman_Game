@@ -65,3 +65,9 @@ h1, .bttn {
     padding: 2%;
     margin: 0.2%;
 }
+
+.guess {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
