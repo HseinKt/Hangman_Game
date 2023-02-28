@@ -71,3 +71,10 @@ h1, .bttn {
     flex-direction: row;
     justify-content: flex-start;
 }
+
+#win {
+    color: green;
+}
+#lost {
+    color: red;
+}

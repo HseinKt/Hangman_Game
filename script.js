@@ -4,6 +4,8 @@ const hint = document.getElementById("hint")
 const guess = document.getElementById("guess")
 const characters = document.getElementById("characters")
 const play = document.getElementById("play")
+const win = document.getElementById("win")
+const lost = document.getElementById("lost")
 const alphabetArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"] ;
 const dict = {
     Players: ['Messi','Ronaldo','Neymar','Maradona','Pele','Ronaldinho'],
@@ -11,6 +13,9 @@ const dict = {
 };
 let arr = []
 
+let lose = 0
+win.innerHTML = ""
+lost.innerHTML = ""
 
 function guess_word() {
     const l = dict.Players.length
@@ -18,6 +23,8 @@ function guess_word() {
     const r = Math.floor((Math.random() * 2) )
     let i =0
     guess.innerHTML = ""
+    win.innerHTML = ""
+    lost.innerHTML = ""
     if (r == 0){
         const r2 = Math.floor((Math.random() * l))
         const ply = dict.Players[r2]
@@ -44,12 +51,12 @@ function guess_word() {
 
 const g = guess_word()
 const words = g.toUpperCase().split("")
-console.log(words)
+console.log("length of the word "+words.length)
 
 function check_Character (n){
     const index = words.indexOf(n)
     console.log(index)
-
+    
     if(words.includes(n)){
         console.log("OK")
         //guess.splice(index, 0, n);
@@ -62,14 +69,12 @@ function check_Character (n){
                 }
                 else {
                     console.log("a : "+a.length)
-                    let count = 0 
+                    let c = 0 
                     console.log("n "+n)
                     for( let j = i+1; j < words.length; j++){
                         console.log(words[j])
-                        console.log("here "+count,a)
-                        if( words[j] == n && count < a.length){
-                            console.log("after if "+count)
-                            count++;
+                        if( words[j] == n && c < a.length){
+                            c++;
                             arr.splice(j,0,n)
                             document.getElementById(`${j}`).innerHTML = n
                         }
@@ -77,7 +82,17 @@ function check_Character (n){
                 }
             }
         }
-        console.log(arr)
+    }
+    else {
+        lose++
+    }
+    if (arr.length === words.length){
+        win.innerHTML = "YOU WIN "
+    }
+    
+    if (lose == 10){
+        lost.innerHTML = "YOU LOSE "
+        hangman.setAttribute("src","hangman.png")
     }
 }
 
@@ -89,16 +104,10 @@ for (let i=0 ; i<alphabetArray.length ; i++) {
     btn.className = "btn_char"
     btn.id = "btn_char"
     btn.addEventListener('click',() => {
-        //console.log(alphabetArray[i])
         check_Character(alphabetArray[i])
     })
     characters.appendChild(btn)
 }
 
-play.addEventListener('click', () => {
-    hangman.setAttribute("src","hangman.png")
-    const c = guess_word()
-    console.log(c)
-})
 
 
